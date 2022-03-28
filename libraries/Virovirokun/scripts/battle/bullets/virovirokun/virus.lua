@@ -1,6 +1,6 @@
-local Virovirus, super = Class(Bullet)
+local Virus, super = Class(Bullet)
 
-function Virovirus:init(x, y)
+function Virus:init(x, y)
     super:init(self, x, y)
 
     self:setSprite("bullets/virovirokun/virus", 3/30, true)
@@ -11,4 +11,4 @@ function Virovirus:init(x, y)
     self.physics.direction = Utils.angle(self.x, self.y, Game.battle.soul.x, Game.battle.soul.y)
 end
 
-return Virovirus
+return Virus
