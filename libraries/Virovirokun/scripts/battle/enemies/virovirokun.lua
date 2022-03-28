@@ -18,8 +18,7 @@ function Virovirokun:init()
     self.spare_points = 20
 
     self.waves = {
-        "vironeedle"
-        --"solidtest"
+        "virovirokun/needle"
     }
 
     self.check = "This sick virus\nneeds affordable healthcare."
@@ -51,12 +50,12 @@ function Virovirokun:isXActionShort(battler)
 end
 
 function Virovirokun:onActStart(battler, name)
-    local kris_outfit = {"kris_virokun_nurse", "kris_virokun_doctor"}
+    local kris_outfit = {"enemies/virovirokun/take_care/kris_nurse", "enemies/virovirokun/take_care/kris_doctor"}
     local sprite_lookup = {
         ["kris"] = kris_outfit[math.random(2)],
-        ["susie"] = "susie_virokun",
-        ["ralsei"] = "ralsei_virokun",
-        ["noelle"] = "noelle_virokun"
+        ["susie"] = "enemies/virovirokun/take_care/susie",
+        ["ralsei"] = "enemies/virovirokun/take_care/ralsei",
+        ["noelle"] = "enemies/virovirokun/take_care/noelle"
     }
     local offset_lookup = {
         ["kris"]   = {4, 12 - 18 + 8},

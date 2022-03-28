@@ -1,11 +1,11 @@
-local Vironeedle, super = Class(Bullet)
+local Needle, super = Class(Bullet)
 
-function Vironeedle:init(x, y, slow, right)
+function Needle:init(x, y, slow, right)
     super:init(self, x, y)
 
     self.collidable = false
 
-    self:setSprite("bullets/viro_needle", 1/15, false, function() self.collidable = true end)
+    self:setSprite("bullets/virovirokun/needle", 1/15, false, function() self.collidable = true end)
     self:setHitbox(4, 6.5, 7, 2)
 
     self.infect_collider = Hitbox(self, 1, 5, 14, 5)
@@ -26,20 +26,20 @@ function Vironeedle:init(x, y, slow, right)
     self.infecting = false
 end
 
-function Vironeedle:infect(other)
+function Needle:infect(other)
     other:remove()
     self.collidable = false
     self.infecting = true
     self.physics.speed = 0
     self:setLayer(math.max(self.layer, other.layer) + 0.01)
     self:setPosition(Vector.lerp(self.x,self.y, other.x,other.y, 0.5))
-    self.sprite:setSprite("bullets/viro_needle_pop")
+    self.sprite:setSprite("bullets/virovirokun/needle_pop")
     self.sprite:setAnimation(function(sprite, wait)
         for i = 1,3 do
             sprite:setFrame(i)
             wait(1/30)
         end
-        local bullet = self.wave:spawnBullet("virovirus", self.x, self.y)
+        local bullet = self.wave:spawnBullet("virovirokun/virus", self.x, self.y)
         bullet:setLayer(self.layer - 0.01)
         sprite:setFrame(4)
         wait(1/30)
@@ -47,7 +47,7 @@ function Vironeedle:infect(other)
     end)
 end
 
-function Vironeedle:update(dt)
+function Needle:update(dt)
     if (self.rotation == 0 and self.x > Game.battle.arena.right + 10) or (self.rotation == math.pi and self.x < Game.battle.arena.left - 10) then
         self.collidable = false
         self:fadeTo(0, 0.1)
@@ -61,7 +61,7 @@ function Vironeedle:update(dt)
     super:update(self, dt)
 end
 
-function Vironeedle:draw()
+function Needle:draw()
     super:draw(self)
 
     if DEBUG_RENDER then
@@ -69,4 +69,4 @@ function Vironeedle:draw()
     end
 end
 
-return Vironeedle
+return Needle

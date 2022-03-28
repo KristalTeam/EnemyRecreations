@@ -3,7 +3,7 @@ local Virovirus, super = Class(Bullet)
 function Virovirus:init(x, y)
     super:init(self, x, y)
 
-    self:setSprite("bullets/viro_virus", 3/30, true)
+    self:setSprite("bullets/virovirokun/virus", 3/30, true)
     self:setHitbox(5, 5, 6, 6)
 
     self.physics.speed = 0.1
