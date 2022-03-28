@@ -1,0 +1,17 @@
+{
+    "id": "EnemyRecreations",
+    "name": "Enemy Recreations",
+    "subtitle": "Libraries for Deltarune enemies",
+
+    "version": "v1.0.0",
+    "engineVer": "v0.1.2-beta",
+
+    "chapter": 2,
+
+    "map": "test",
+    "party": ["kris", "susie", "ralsei"],
+    "inventory": {
+        "item": ["darkburger", "darkburger"],
+        "key": ["cell_phone"]
+    }
+}
