@@ -9,11 +9,11 @@ function Rudinn:init()
     self.path = "enemies/rudinn"
     self.default = "idle"
 
-    self.max_health = 130
-    self.health = 130
+    self.max_health = 120
+    self.health = 120
     self.attack = 6
     self.defense = 0
-    self.gold = 94
+    self.gold = 30
 
     self.spare_points = 20
 
@@ -122,7 +122,7 @@ function Rudinn:getEnemyDialogue()
         }
     else
         dialogue = {
-            "I'm a\normal\nperson.",
+            "I'm a\nnormal\nperson.",
             "Long live\nthe guy\nwho pays us!",
             "Shine,\nshine",
             "Face my\nDiamond\nCutter!"
