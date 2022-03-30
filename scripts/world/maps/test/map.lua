@@ -2,7 +2,8 @@ local TestMap, super = Class(Map)
 
 TestMap.ENCOUNTERS = {
     "virovirokun",
-    "rudinn"
+    "rudinn",
+    "viro_rudinn"
 }
 
 function TestMap:load()

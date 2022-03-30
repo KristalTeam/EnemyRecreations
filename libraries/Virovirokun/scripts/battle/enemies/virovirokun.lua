@@ -60,27 +60,23 @@ function Virovirokun:isXActionShort(battler)
 end
 
 function Virovirokun:onActStart(battler, name)
-    local kris_outfit = {"enemies/virovirokun/take_care/kris_nurse", "enemies/virovirokun/take_care/kris_doctor"}
-    local sprite_lookup = {
-        ["kris"] = kris_outfit[math.random(2)],
-        ["susie"] = "enemies/virovirokun/take_care/susie",
-        ["ralsei"] = "enemies/virovirokun/take_care/ralsei",
-        ["noelle"] = "enemies/virovirokun/take_care/noelle"
-    }
-    local offset_lookup = {
-        ["kris"]   = {4, 12 - 18 + 8},
-        ["susie"]  = {6, 12 + 16 - 28},
-        ["ralsei"] = {4 - 10, -12 + 13},
-        ["noelle"] = {7, 0}
-    }
+    local sprite_lookup = Kristal.getLibConfig("Virovirokun", "take_care_sprites", true)
+    local offset_lookup = Kristal.getLibConfig("Virovirokun", "take_care_offsets", true)
+
+    local function getSpriteAndOffset(id)
+        local selected_sprite = sprite_lookup[id] or ("enemies/virovirokun/take_care/"..id)
+        if type(selected_sprite) == "table" then
+            selected_sprite = Utils.pick(sprite_lookup[id])
+        end
+        local selected_offset = offset_lookup[id] or {0, 0}
+        return selected_sprite, selected_offset[1], selected_offset[2]
+    end
 
     if name == "TakeCare" then
-        local id = battler.chara.id
-        battler:setActSprite(sprite_lookup[id], offset_lookup[id][1], offset_lookup[id][2])
+        battler:setActSprite(getSpriteAndOffset(battler.chara.id))
     elseif name == "TakeCareX" then
         for _,ibattler in ipairs(Game.battle.party) do
-            local id = ibattler.chara.id
-            ibattler:setActSprite(sprite_lookup[id], offset_lookup[id][1], offset_lookup[id][2])
+            ibattler:setActSprite(getSpriteAndOffset(ibattler.chara.id))
         end
     else
         super:onActStart(self, battler, name)

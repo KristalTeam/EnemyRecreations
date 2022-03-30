@@ -11,7 +11,7 @@
     "map": "test",
     "party": ["kris", "susie", "ralsei"],
     "inventory": {
-        "item": ["darkburger", "darkburger"],
+        "item": ["darkburger", "darkburger", "glowshard"],
         "key": ["cell_phone"]
     },
 
