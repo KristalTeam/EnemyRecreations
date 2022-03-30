@@ -34,13 +34,23 @@ function Virovirokun:init()
 
     self:registerAct("TakeCare")
     self:registerAct("TakeCareX", "", "all")
-    --self:registerAct("TakeCareX", "", {"kris", "susie", "ralsei"})
-    --self:registerAct("TakeCareX", "", {"kris", "noelle"})
-    self:registerShortAct("Quarantine", "Make\nenemy\nTIRED", {"kris"})
-    self:registerActFor("kris", "R-Cook", "", {"ralsei"})
-    self:registerActFor("kris", "S-Cook", "", {"susie"})
-    self:registerActFor("ralsei", "Cook")
-    self:registerActFor("susie", "Cook")
+
+    -- Unused Deltarune act
+    if Kristal.getLibConfig("Virovirokun", "enable_cook") then
+        self:registerActFor("ralsei", "Cook")
+        self:registerActFor("susie", "Cook")
+
+        local act_leader = Game:getActLeader()
+        if act_leader then
+            self:registerActFor(act_leader.id, "R-Cook", "", {"ralsei"})
+            self:registerActFor(act_leader.id, "S-Cook", "", {"susie"})
+        end
+    end
+
+    -- Custom Kristal act, made for testing
+    if Kristal.getLibConfig("Virovirokun", "enable_quarantine") then
+        self:registerShortAct("Quarantine", "Make\nenemy\nTIRED")
+    end
 
     self.text_override = nil
 end
@@ -79,7 +89,6 @@ end
 
 function Virovirokun:onShortAct(battler, name)
     if name == "Quarantine" then
-        print("telling virovirokun to stay home, naughty naughty")
         if battler.chara.id == "kris" then
             return "* You told Virovirokun to stay home."
         else
@@ -107,9 +116,6 @@ function Virovirokun:onAct(battler, name)
         self:setTired(true)
         self.text_override = "Fine..."
         return "* You told Virovirokun to stay home.\nVirovirokun became [color:blue]TIRED[color:reset]..."
-
-        --local heck = DamageNumber("damage", love.math.random(600), 200, 200, battler.actor.dmg_color)
-        --self.parent:addChild(heck)
     elseif name == "TakeCareX" then
         for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
             if enemy.id == "virovirokun" then

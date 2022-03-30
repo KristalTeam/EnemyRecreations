@@ -13,5 +13,12 @@
     "inventory": {
         "item": ["darkburger", "darkburger"],
         "key": ["cell_phone"]
+    },
+
+    "config": {
+        "Virovirokun": {
+            "enable_cook": true,
+            "enable_quarantine": true
+        }
     }
 }
