@@ -39,4 +39,21 @@ function ViroRudinn:onGlowshardUse(user)
     }
 end
 
+-- TODO: Manual functions in enemies
+function ViroRudinn:onManualUse(user)
+    local lines = ""
+    for _, enemy in ipairs(Game.battle.enemies) do
+        if enemy.id == "rudinn" then
+            lines = lines .. "* " .. enemy.name .. " was [color:blue]bored to tears[color:reset]!\n"
+            enemy:setAnimation("tired")
+		    enemy:setTired(true)
+            enemy.text_override = "Hey can\nyou read\nit more fast?"
+        end
+    end
+    return {
+        "* "..user.chara.name.." read the MANUAL!",
+        lines
+    }
+end
+
 return ViroRudinn

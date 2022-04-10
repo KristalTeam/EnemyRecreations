@@ -36,7 +36,7 @@ function Virovirokun:init()
     self:registerAct("TakeCareX", "", "all")
 
     -- Unused Deltarune act
-    if Kristal.getLibConfig("Virovirokun", "enable_cook") then
+    if Kristal.getLibConfig("virovirokun", "enable_cook") then
         self:registerActFor("ralsei", "Cook")
         self:registerActFor("susie", "Cook")
 
@@ -48,7 +48,7 @@ function Virovirokun:init()
     end
 
     -- Custom Kristal act, made for testing
-    if Kristal.getLibConfig("Virovirokun", "enable_quarantine") then
+    if Kristal.getLibConfig("virovirokun", "enable_quarantine") then
         self:registerShortAct("Quarantine", "Make\nenemy\nTIRED")
     end
 
@@ -60,8 +60,8 @@ function Virovirokun:isXActionShort(battler)
 end
 
 function Virovirokun:onActStart(battler, name)
-    local sprite_lookup = Kristal.getLibConfig("Virovirokun", "take_care_sprites", true)
-    local offset_lookup = Kristal.getLibConfig("Virovirokun", "take_care_offsets", true)
+    local sprite_lookup = Kristal.getLibConfig("virovirokun", "take_care_sprites", true)
+    local offset_lookup = Kristal.getLibConfig("virovirokun", "take_care_offsets", true)
 
     local function getSpriteAndOffset(id)
         local selected_sprite = sprite_lookup[id] or ("enemies/virovirokun/take_care/"..id)

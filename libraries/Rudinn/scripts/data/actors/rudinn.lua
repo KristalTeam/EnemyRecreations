@@ -1,27 +1,33 @@
-return {
-    id = "rudinn",
+local actor, super = Class(Actor, "rudinn")
 
-    width = 35,
-    height = 40,
+function actor:init()
+    super.init(self)
 
-    hitbox = {3, 24, 24, 16},
+    self.name = "Rudinn"
 
-    flip = "right",
+    self.width = 35
+    self.height = 40
 
-    path = "enemies/rudinn",
-    default = "idle",
+    self.hitbox = {3, 24, 24, 16}
 
-    animations = {
+    self.flip = "right"
+
+    self.path = "enemies/rudinn"
+    self.default = "idle"
+
+    self.animations = {
         ["idle"] = {"idle", 0.25, true},
         ["tired"] = {"tired", 0.25, true},
         ["spared"] = {"spared", 0.25, true},
         ["hurt"] = {"hurt", 0, false}
-    },
+    }
 
-    offsets = {
+    self.offsets = {
         ["idle"] = {6, -5},
         ["tired"] = {6, -5},
         ["spared"] = {4, -5},
         ["hurt"] = {1, 1},
-    },
-}
+    }
+end
+
+return actor

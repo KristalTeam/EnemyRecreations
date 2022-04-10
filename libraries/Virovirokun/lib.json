@@ -1,11 +1,11 @@
 {
-    "id": "Virovirokun",
+    "id": "virovirokun",
     "authors": [
         "Sylvi",
         "Nyako"
     ],
-    "version": "v0.1.1",
-    "engineVer": "v0.1.2-beta",
+    "version": "v0.2.0",
+    "engineVer": "v0.3.0-dev",
 
     "config": {
         "enable_cook": false,

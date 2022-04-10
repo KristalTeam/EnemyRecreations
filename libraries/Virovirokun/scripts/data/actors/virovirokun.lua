@@ -1,27 +1,31 @@
-return {
-    id = "virovirokun",
+local actor, super = Class(Actor, "virovirokun")
 
-    width = 38,
-    height = 51,
+function actor:init()
+    super.init(self)
 
-    hitbox = {0, 25, 38, 26},
+    self.name = "Virovirokun"
 
-    flip = "right",
+    self.width = 38
+    self.height = 51
 
-    path = "enemies/virovirokun",
-    default = "idle",
+    self.hitbox = {0, 25, 38, 26}
 
-    animations = {
+    self.flip = "right"
+
+    self.path = "enemies/virovirokun"
+    self.default = "idle"
+
+    self.animations = {
         ["idle"] = {"idle", 0.25, true},
         ["spared"] = {"spared", 0, false},
         ["hurt"] = {"hurt", 0, false}
-    },
+    }
 
-    offsets = {
+    self.offsets = {
         ["idle"] = {6, 3},
         ["spared"] = {1, 0},
         ["hurt"] = {2, 2},
-    },
+    }
+end
 
-    color = {1, 0, 1, 1}
-}
+return actor

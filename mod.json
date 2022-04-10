@@ -4,7 +4,7 @@
     "subtitle": "Libraries for Deltarune enemies",
 
     "version": "v1.0.0",
-    "engineVer": "v0.1.2-beta",
+    "engineVer": "v0.3.0-dev",
 
     "chapter": 2,
 
@@ -16,7 +16,7 @@
     },
 
     "config": {
-        "Virovirokun": {
+        "virovirokun": {
             "enable_cook": true,
             "enable_quarantine": true
         }
