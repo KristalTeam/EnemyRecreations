@@ -27,12 +27,29 @@ function Needle:init(x, y, slow, right)
 end
 
 function Needle:infect(other)
-    other:remove()
     self.collidable = false
     self.infecting = true
     self.physics.speed = 0
+
     self:setLayer(math.max(self.layer, other.layer) + 0.01)
-    self:setPosition(Vector.lerp(self.x,self.y, other.x,other.y, 0.5))
+
+    local ox, oy = other:getRelativePosFor(self.parent)
+
+    if other.id == self.id then
+        self:setPosition(Utils.lerpPoint(self.x,self.y, ox,oy, 0.5))
+    else
+        self:setPosition(ox, oy)
+    end
+
+    local poison_sprite = Sprite("bullets/virovirokun/poison_big", ox, oy)
+    poison_sprite:setOrigin(0.5, 0.5)
+    poison_sprite:setScale(2, 2)
+    poison_sprite:setLayer(self.layer + 0.01)
+    poison_sprite:play(2/30, false, function(sprite)
+        sprite:remove()
+    end)
+    self.parent:addChild(poison_sprite)
+
     self.sprite:setSprite("bullets/virovirokun/needle_pop")
     self.sprite:setAnimation(function(sprite, wait)
         for i = 1,3 do
@@ -45,6 +62,8 @@ function Needle:infect(other)
         wait(1/30)
         self:remove()
     end)
+
+    other:remove()
 end
 
 function Needle:update(dt)

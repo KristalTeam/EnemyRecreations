@@ -17,8 +17,8 @@
 
     "config": {
         "virovirokun": {
-            "enable_cook": true,
-            "enable_quarantine": true
+            "enable_cook": false,
+            "enable_quarantine": false
         }
     }
 }

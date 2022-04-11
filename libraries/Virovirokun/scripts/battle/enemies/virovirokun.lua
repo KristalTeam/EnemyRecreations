@@ -18,7 +18,8 @@ function Virovirokun:init()
     self.spare_points = 20
 
     self.waves = {
-        "virovirokun/needle"
+        "virovirokun/needle",
+        "virovirokun/invader"
     }
 
     self.check = "This sick virus\nneeds affordable healthcare."
