@@ -52,7 +52,7 @@ function Rudinn:onShortAct(battler, name)
         if battler.chara.id == "kris" then
             return "* You lectured the enemies on the\nimportance of kindness."
         else
-            return "* " .. battler.chara.name .. " lectured the enemies on the\nimportance of kindness."
+            return "* " .. battler.chara:getName() .. " lectured the enemies on the\nimportance of kindness."
         end
     elseif name == "Standard" then
         self:addMercy(100)
