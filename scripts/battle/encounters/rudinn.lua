@@ -16,19 +16,13 @@ function Rudinn:init()
 end
 
 -- TODO: Glowshard functions in enemies
-function Rudinn:onGlowshardUse(user)
+function Rudinn:onGlowshardUse(item, user)
     local lines = ""
     for _, enemy in ipairs(Game.battle.enemies) do
         lines = lines .. "* " .. enemy.name .. " became enraptured!\n"
         enemy:addMercy(100)
     end
-    local inventory = Game.inventory:getStorage("item")
-    for index,item in ipairs(inventory) do
-        if item.id == "glowshard" then
-            Game.inventory:removeItem("item", index)
-            break
-        end
-    end
+    Game.inventory:removeItem(item)
     return {
         "* "..user.chara.name.." used the GLOWSHARD!",
         lines,
@@ -37,7 +31,7 @@ function Rudinn:onGlowshardUse(user)
 end
 
 -- TODO: Manual functions in enemies
-function Rudinn:onManualUse(user)
+function Rudinn:onManualUse(item, user)
     local lines = ""
     for _, enemy in ipairs(Game.battle.enemies) do
         if enemy.id == "rudinn" then

@@ -27,6 +27,8 @@ function Needle:init(x, y, slow, right)
 end
 
 function Needle:infect(other)
+    if not other.parent or not self.parent then return end
+
     self.collidable = false
     self.infecting = true
     self.physics.speed = 0

@@ -4,15 +4,15 @@
     "subtitle": "Libraries for Deltarune enemies",
 
     "version": "v1.0.0",
-    "engineVer": "v0.3.0-dev",
+    "engineVer": "v0.4.0",
 
     "chapter": 2,
 
     "map": "test",
     "party": ["kris", "susie", "ralsei"],
     "inventory": {
-        "item": ["darkburger", "darkburger", "glowshard"],
-        "key": ["cell_phone"]
+        "items": ["darkburger", "darkburger", "glowshard"],
+        "key_items": ["cell_phone"]
     },
 
     "config": {

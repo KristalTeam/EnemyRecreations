@@ -17,7 +17,7 @@ function ViroRudinn:init()
 end
 
 -- TODO: Glowshard functions in enemies
-function ViroRudinn:onGlowshardUse(user)
+function ViroRudinn:onGlowshardUse(item, user)
     local lines = ""
     for _, enemy in ipairs(Game.battle.enemies) do
         if enemy.id == "rudinn" then
@@ -25,13 +25,7 @@ function ViroRudinn:onGlowshardUse(user)
             enemy:addMercy(100)
         end
     end
-    local inventory = Game.inventory:getStorage("item")
-    for index,item in ipairs(inventory) do
-        if item.id == "glowshard" then
-            Game.inventory:removeItem("item", index)
-            break
-        end
-    end
+    Game.inventory:removeItem(item)
     return {
         "* "..user.chara.name.." used the GLOWSHARD!",
         lines,
@@ -40,7 +34,7 @@ function ViroRudinn:onGlowshardUse(user)
 end
 
 -- TODO: Manual functions in enemies
-function ViroRudinn:onManualUse(user)
+function ViroRudinn:onManualUse(item, user)
     local lines = ""
     for _, enemy in ipairs(Game.battle.enemies) do
         if enemy.id == "rudinn" then
