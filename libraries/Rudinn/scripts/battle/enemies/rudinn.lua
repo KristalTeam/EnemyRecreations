@@ -13,7 +13,7 @@ function Rudinn:init()
     self.health = 120
     self.attack = 6
     self.defense = 0
-    self.gold = 30
+    self.money = 30
 
     self.spare_points = 20
 
