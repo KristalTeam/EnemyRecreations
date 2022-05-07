@@ -49,7 +49,7 @@ function TestMap:respawn()
     Game.world:spawnParty()
 end
 
-function TestMap:update(dt)
+function TestMap:update()
     local encounter = self:getFlag("encounter", 1)
 
     local custom_enemies = self:getFlag("enemies", {})
@@ -73,7 +73,7 @@ function TestMap:update(dt)
         self:spawnEnemy()
     end
 
-    super:update(dt)
+    super:update(self)
 end
 
 function TestMap:draw()

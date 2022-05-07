@@ -5,7 +5,7 @@
         "Nyako"
     ],
     "version": "v1.1.0",
-    "engineVer": "v0.4.0",
+    "engineVer": "v0.5.1",
 
     "config": {
         "enable_cook": false,
