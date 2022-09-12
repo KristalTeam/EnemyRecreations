@@ -54,6 +54,8 @@ function Virovirokun:init()
     end
 
     self.text_override = nil
+
+    self.noelle_fallen = false
 end
 
 function Virovirokun:isXActionShort(battler)
@@ -78,6 +80,25 @@ function Virovirokun:onActStart(battler, name)
     elseif name == "TakeCareX" then
         for _,ibattler in ipairs(Game.battle.party) do
             ibattler:setActSprite(getSpriteAndOffset(ibattler.chara.id))
+            if ibattler.chara.id == "noelle" then
+                Game.battle.timer:script(function(wait)
+                    local _, ox, oy = getSpriteAndOffset(battler.chara.id)
+                    wait(1)
+                    ibattler:setCustomSprite("enemies/virovirokun/take_care/noelle_fall_1", ox, oy)
+                    Assets.playSound("noise")
+                    ibattler.sprite.shake_x = 5
+                    wait(20/30)
+                    ibattler:setCustomSprite("enemies/virovirokun/take_care/noelle_fall_2", ox, oy)
+                    local last_x = ibattler.x
+                    ibattler.physics.speed_x = 6
+                    ibattler.physics.friction = 0.75
+                    Assets.playSound("splat", 0.6, 0.8)
+                    wait(1)
+                    ibattler:resetSprite()
+                    ibattler.x = last_x
+                    self.noelle_fallen = true
+                end)
+            end
         end
     else
         super:onActStart(self, battler, name)
@@ -121,7 +142,34 @@ function Virovirokun:onAct(battler, name)
                 enemy:addMercy(50)
             end
         end
-        return "* Everyone treated the enemy with\ntender loving care!! All the\nenemies felt great!!"
+        Game.battle:startActCutscene(function(cutscene)
+            local has_noelle = false
+            for _,party in ipairs(Game.battle.party) do
+                if party.chara.id == "noelle" then
+                    has_noelle = true
+                    break
+                end
+            end
+            if has_noelle and (#Game.battle.party == 2) then
+                cutscene:text("* You and Noelle showed the enemy tender loving care!")
+            else
+                cutscene:text("* Everyone treated the enemy with\ntender loving care!! All the\nenemies felt great!!")
+            end
+
+            if not has_noelle then
+                return
+            end
+
+            cutscene:wait(function() return self.noelle_fallen end)
+            self.noelle_fallen = false
+
+            for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
+                if enemy.id == "virovirokun" then
+                    enemy.text_override = "Nice"
+                end
+            end
+        end)
+        return
     elseif name == "R-Cook" then
         Game.battle:startActCutscene("virovirokun", "cook_ralsei")
         return
