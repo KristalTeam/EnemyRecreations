@@ -38,7 +38,7 @@ function Rudinn:onManualUse(item, user)
             lines = lines .. "* " .. enemy.name .. " was [color:blue]bored to tears[color:reset]!\n"
             enemy:setAnimation("tired")
             enemy:setTired(true)
-            enemy.text_override = "Hey can\nyou read\nit more fast?"
+            enemy.dialogue_override = "Hey can\nyou read\nit more fast?"
         end
     end
     return {

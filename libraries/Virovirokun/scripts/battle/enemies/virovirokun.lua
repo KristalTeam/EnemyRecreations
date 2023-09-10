@@ -34,7 +34,10 @@ function Virovirokun:init()
     self.low_health_text = "* Virovirokun looks extra sick."
 
     self:registerAct("TakeCare")
-    self:registerAct("TakeCareX", "", "all")
+
+    if #Game.party > 1 then
+        self:registerAct("TakeCareX", "", "all")
+    end
 
     -- Unused Deltarune act
     if Kristal.getLibConfig("virovirokun", "enable_cook") then
@@ -53,9 +56,10 @@ function Virovirokun:init()
         self:registerShortAct("Quarantine", "Make\nenemy\nTIRED")
     end
 
-    self.text_override = nil
+    self.dialogue_override = nil
 
     self.noelle_fallen = false
+    self.noelle_last_x = 0
 end
 
 function Virovirokun:isXActionShort(battler)
@@ -86,16 +90,14 @@ function Virovirokun:onActStart(battler, name)
                     wait(1)
                     ibattler:setCustomSprite("enemies/virovirokun/take_care/noelle_fall_1", ox, oy)
                     Assets.playSound("noise")
-                    ibattler.sprite.shake_x = 5
+                    ibattler.sprite:shake(5, 0, 1, 1/30)
                     wait(20/30)
                     ibattler:setCustomSprite("enemies/virovirokun/take_care/noelle_fall_2", ox, oy)
-                    local last_x = ibattler.x
+                    self.noelle_last_x = ibattler.x
                     ibattler.physics.speed_x = 6
                     ibattler.physics.friction = 0.75
                     Assets.playSound("splat", 0.6, 0.8)
                     wait(1)
-                    ibattler:resetSprite()
-                    ibattler.x = last_x
                     self.noelle_fallen = true
                 end)
             end
@@ -132,7 +134,7 @@ function Virovirokun:onAct(battler, name)
         return "* You treated Virovirokun with\ncare! It's no longer\ninfectious!"
     elseif name == "Quarantine" then
         self:setTired(true)
-        self.text_override = "Fine..."
+        self.dialogue_override = "Fine..."
         return "* You told Virovirokun to stay home.\nVirovirokun became [color:blue]TIRED[color:reset]..."
     elseif name == "TakeCareX" then
         for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
@@ -163,9 +165,12 @@ function Virovirokun:onAct(battler, name)
             cutscene:wait(function() return self.noelle_fallen end)
             self.noelle_fallen = false
 
+            local noelle = Game.battle:getPartyBattler("noelle")
+            noelle.x = self.noelle_last_x
+
             for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
                 if enemy.id == "virovirokun" then
-                    enemy.text_override = "Nice"
+                    enemy.dialogue_override = "Nice"
                 end
             end
         end)
@@ -210,9 +215,9 @@ function Virovirokun:onAct(battler, name)
 end
 
 function Virovirokun:getEnemyDialogue()
-    if self.text_override then
-        local dialogue = self.text_override
-        self.text_override = nil
+    if self.dialogue_override then
+        local dialogue = self.dialogue_override
+        self.dialogue_override = nil
         return dialogue
     end
 

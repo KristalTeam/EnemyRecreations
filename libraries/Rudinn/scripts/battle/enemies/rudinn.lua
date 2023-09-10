@@ -37,7 +37,7 @@ function Rudinn:init()
     self:registerAct("Convince")
     self:registerAct("Lecture")
 
-    self.text_override = nil
+    self.dialogue_override = nil
 end
 
 function EnemyBattler:isXActionShort(battler)
@@ -75,7 +75,7 @@ function Rudinn:onAct(battler, name)
     elseif name == "Lecture" then
 		self:setAnimation("tired")
         self:setTired(true)
-        self.text_override = "(Yawn)...\nWhat? OK.."
+        self.dialogue_override = "(Yawn)...\nWhat? OK.."
         return "* You lectured Rudinn on the\nimportance of kindness.\nRudinn became [color:blue]TIRED[color:reset]..."
 
         --local heck = DamageNumber("damage", love.math.random(600), 200, 200, battler.actor.dmg_color)
@@ -83,20 +83,20 @@ function Rudinn:onAct(battler, name)
     elseif name == "Standard" then
         self:addMercy(50)
         if battler.chara.id == "noelle" then
-			self.text_override = "Oh!\nIt is??"
+			self.dialogue_override = "Oh!\nIt is??"
 			Game.battle:startActCutscene(function(cutscene)
 				cutscene:text("* Noelle tried to give encouragement!")
 				cutscene:text("* That necklace is, um...\nit's really shiny!", "smile_closed", "noelle")
 			end)
         elseif battler.chara.id == "susie" then
-            self.text_override = "Alright,\nalready..."
+            self.dialogue_override = "Alright,\nalready..."
             Game.battle:startActCutscene(function(cutscene)
                 cutscene:text("* Susie tried to give encouragement!")
                 cutscene:text("* You! Get off your ass,\nor else!!", "teeth", "susie")
             end)
             return
         elseif battler.chara.id == "ralsei" then
-			self.text_override = "Oh! I'll\ntake a\nbreak\nright now!"
+			self.dialogue_override = "Oh! I'll\ntake a\nbreak\nright now!"
             Game.battle:startActCutscene(function(cutscene)
                 cutscene:text("* Ralsei tried to give encouragement!")
                 cutscene:text("* Don't feel bad about taking\nbreaks every so often...\nit's perfectly normal!", "smile", "ralsei")
@@ -108,9 +108,9 @@ function Rudinn:onAct(battler, name)
 end
 
 function Rudinn:getEnemyDialogue()
-    if self.text_override then
-        local dialogue = self.text_override
-        self.text_override = nil
+    if self.dialogue_override then
+        local dialogue = self.dialogue_override
+        self.dialogue_override = nil
         return dialogue
     end
 

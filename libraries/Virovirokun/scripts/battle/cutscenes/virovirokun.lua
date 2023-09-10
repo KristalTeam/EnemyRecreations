@@ -8,20 +8,23 @@ return {
         cutscene:text("* Sickness was cured! Everyone's\nHP up!")
     end,
 
-    cook_susie = function(cutscene, battler, enemy)
+    cook_susie = function(cutscene, battler, act_enemy)
         cutscene:text("* Susie cooked up a cure!")
         cutscene:text("* What, you want me to\ncook something!?", "smile", "susie")
         cutscene:text("* Susie put a hot dog in the\nmicrowave!")
-        if false then
-            local susie = cutscene:getCharacter("susie")
-            local explosion = susie:explode(0, 0, true)
-            explosion:setScale(1)
-            explosion.speed = 1
-            explosion:setOrigin(0.5, 0.75)
-        else
-            enemy:explode(0, 0, true)
+        local susie = cutscene:getCharacter("susie")
+
+        local explosion = Explosion(susie.x - 6, susie.y - 73) -- This is awful but accurate
+        explosion:setScale(1)
+        explosion.speed = 1
+        Game.battle:addChild(explosion)
+
+        for _, enemy in ipairs(Game.battle:getActiveEnemies()) do
+            if enemy.health >= 10 then
+                enemy:hurt(math.floor(enemy.health * 0.75), susie)
+            end
         end
-        enemy:hurt(enemy.health * 0.75, battler)
+
         cutscene:text("* She forgot to poke holes in it!\nThe hot dog exploded!")
     end
 }
