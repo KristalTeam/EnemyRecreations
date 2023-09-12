@@ -1,4 +1,4 @@
-local ViroRudinn, super = Class(Encounter)
+local ViroRudinn, super = Class("custom_encounter")
 
 function ViroRudinn:init()
     super:init(self)

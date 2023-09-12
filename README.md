@@ -7,5 +7,9 @@ Kristal main repo: https://github.com/KristalTeam/Kristal
 
 ## Ported enemies
 
-- [Virovirokun](libraries/Virovirokun) by *Sylvi*, *Nyako*
+### Chapter 1
 - [Rudinn](libraries/Rudinn) by *Kaysan*, *pixelator*
+
+### Chapter 2
+- [Virovirokun](libraries/Virovirokun) by *Sylvi*, *Nyako*
+- [Werewire](libraries/Werewire) by *Sylvi*

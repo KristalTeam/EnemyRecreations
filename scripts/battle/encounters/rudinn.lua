@@ -1,4 +1,4 @@
-local Rudinn, super = Class(Encounter)
+local Rudinn, super = Class("custom_encounter")
 
 function Rudinn:init()
     super:init(self)
