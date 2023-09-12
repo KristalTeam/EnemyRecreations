@@ -338,7 +338,7 @@ function BattleSelectScreen:showcaseUpdate()
 end
 
 function BattleSelectScreen:draw()
-    Draw.setColor(0, 0, 0)
+    Draw.setColor(0.1, 0.1, 0.1)
     love.graphics.rectangle("fill", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
 
     Draw.setColor(0, 0, 0)
