@@ -1,5 +1,5 @@
 Mod.PARTY_MEMBERS = {"kris", "susie", "ralsei", "noelle", "greenkris"}
-Mod.ENEMIES = {"rudinn", "werewire", "virovirokun"}
+Mod.ENEMIES = {"rudinn", "werewire", "tasque", "virovirokun"}
 
 Mod.BATTLER_COLORS = {
     ["kris"] = {0.12, 0.16, 0.8},
@@ -8,8 +8,9 @@ Mod.BATTLER_COLORS = {
     ["noelle"] = {0.93, 1, 0},
 
     ["rudinn"] = {0.34, 1, 0.81},
-    ["virovirokun"] = {0.22, 0, 0.5},
     ["werewire"] = {0.93, 1, 0},
+    ["tasque"] = {0, 0.63, 1},
+    ["virovirokun"] = {0.22, 0, 0.5},
 
     ["greenkris"] = {0, 1, 0.55},
 
@@ -24,6 +25,7 @@ Mod.BATTLER_OFFSETS = {
 
     ["rudinn"] = {2, 21},
     ["virovirokun"] = {0, 31},
+    ["tasque"] = {0, 25},
     ["werewire"] = {0, 46},
 
     ["greenkris"] = {0, 26},
@@ -37,6 +39,9 @@ Mod.SPECIAL_ENCOUNTERS = {
         ["werewire"] = 2
     },
     -- Accurate placements
+    ["tasque"] = {
+        ["tasque"] = 2
+    },
     ["virovirokun"] = {
         ["virovirokun"] = 2
     },
