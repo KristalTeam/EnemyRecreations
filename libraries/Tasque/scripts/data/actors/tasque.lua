@@ -37,7 +37,7 @@ function actor:init()
 
     -- Table of sprite animations
     self.animations = {
-        ["idle"] = {"idle", 5/30, true},
+        ["idle"] = {"idle", 6/30, true},
         ["spared"] = {"spared", 0, false},
         ["hurt"] = {"hurt", 0, false},
 
