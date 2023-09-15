@@ -10,7 +10,12 @@ return function(cutscene)
         if enemy.id ~= "werewire" then
             enemy:slideTo(740, enemy.y, 0.5)
         else
-            enemy:slideTo(578 - ((#werewires - 1) * 100) + (werewire_index * 100), 302, 0.5)
+            if #werewires <= 3 then
+                enemy:slideTo(578 - ((#werewires - 1) * 100) + (werewire_index * 100), 302, 0.5)
+            else
+                local step = 250 / (#werewires - 1)
+                enemy:slideTo(578 - 250 + (werewire_index * step), 302, 0.5)
+            end
             werewire_index = werewire_index + 1
         end
     end

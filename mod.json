@@ -11,14 +11,21 @@
     "map": "test",
     "party": ["kris", "susie", "ralsei"],
     "inventory": {
-        "items": ["darkburger", "darkburger", "glowshard"],
+        "items": ["darkburger", "darkburger", "glowshard", "manual"],
         "key_items": ["cell_phone"]
     },
 
     "config": {
         "virovirokun": {
             "enable_cook": true,
-            "enable_quarantine": false
+            "enable_quarantine": false,
+
+            "take_care_sprites": {
+                "greenkris": ["enemies/virovirokun/take_care/greenkris_doctor", "enemies/virovirokun/take_care/greenkris_nurse"]
+            },
+            "take_care_offsets": {
+                "greenkris": [-4, -2]
+            }
         }
     }
 }

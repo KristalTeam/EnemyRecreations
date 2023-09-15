@@ -12,7 +12,7 @@ function Attack:onStart()
 
     for i, attacker in ipairs(self:getAttackers()) do
         self.attacker_id[attacker] = i
-        self:queueAttack(Utils.random(5/30) + (i - 1), attacker)
+        self:queueAttack(Utils.random(5/30) + ((i - 1) % 4), attacker)
     end
 end
 
@@ -39,7 +39,7 @@ function Attack:queueAttack(time, attacker)
 
         --self:doAttack(attacker, Utils.pick{"throw", "shoot"})
         self:doAttack(attacker, Utils.pick{"shoot", "throw"}, function()
-            local attackers = #self:getAttackers()
+            local attackers = math.min(#self:getAttackers(), 4)
             local next_attack_time = ((attackers * 6/30) + Utils.random(7/30)) * attackers
 
             self:queueAttack(next_attack_time, attacker)
