@@ -14,17 +14,6 @@ function Hathy:init()
 
     self.spare_points = 20
 
-    local enemies = Game.battle:getActiveEnemies()
-    if #enemies >= 2 then
-        self.waves = {
-            "hathy/spinheart"
-        }
-    else
-        self.waves = {
-            "hathy/heartshaper"
-        }
-    end
-
     self.dialogue = {
         "[voice:nil]\n[image:enemies/hathy/heartchomp, 0, -5, 1, 1, 0.2]\n",
         "[voice:nil]\n[image:enemies/hathy/heartkiss, 0, -5, 1, 1, 0.2]\n"
@@ -89,21 +78,20 @@ function Hathy:getEnemyDialogue()
         self.dialogue_override = nil
         return dialogue
     end
-    
+
     return Utils.pick(self.dialogue)
 end
 
-function Hathy:update()
-    super.update(self)
+function Hathy:getNextWaves()
+    if self.wave_override then
+        return super.getNextWaves(self)
+    end
+
     local enemies = Game.battle:getActiveEnemies()
     if #enemies >= 2 then
-        self.waves = {
-            "hathy/heartshaper"
-        }
+        return {"hathy/heartshaper"}
     else
-        self.waves = {
-            "hathy/spinheart"
-        }
+        return {"hathy/spinheart"}
     end
 end
 

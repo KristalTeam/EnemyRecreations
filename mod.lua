@@ -1,5 +1,5 @@
 Mod.PARTY_MEMBERS = {"kris", "susie", "ralsei", "noelle", "greenkris"}
-Mod.ENEMIES = {"rudinn", "werewire", "tasque", "virovirokun"}
+Mod.ENEMIES = {"rudinn", "hathy", "werewire", "tasque", "virovirokun"}
 
 Mod.BATTLER_COLORS = {
     ["kris"] = {0.12, 0.16, 0.8},
@@ -8,6 +8,7 @@ Mod.BATTLER_COLORS = {
     ["noelle"] = {0.93, 1, 0},
 
     ["rudinn"] = {0.34, 1, 0.81},
+    ["hathy"] = {0.11, 1, 0.3},
     ["werewire"] = {0.93, 1, 0},
     ["tasque"] = {0, 0.63, 1},
     ["virovirokun"] = {0.22, 0, 0.5},
@@ -24,6 +25,7 @@ Mod.BATTLER_OFFSETS = {
     ["noelle"] = {0, 26},
 
     ["rudinn"] = {2, 21},
+    ["hathy"] = {0, 30},
     ["virovirokun"] = {0, 31},
     ["tasque"] = {0, 25},
     ["werewire"] = {0, 46},

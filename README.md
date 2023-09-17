@@ -9,6 +9,7 @@ Kristal main repo: https://github.com/KristalTeam/Kristal
 
 ### Chapter 1
 - [Rudinn](libraries/Rudinn) by *Kaysan*, *pixelator*
+- [Hathy](libraries/Hathy) by *BrendaK7200*
 
 ### Chapter 2
 - [Virovirokun](libraries/Virovirokun) by *Sylvi*, *Nyako*
