@@ -5,7 +5,7 @@ function actor:init()
 
     self.name = "Hathy"
 
-    self.width = 49
+    self.width = 53
     self.height = 48
 
     self.hitbox = {13, 35, 40, 14}
@@ -32,9 +32,6 @@ function actor:init()
     }
 
     self.offsets = {
-        ["idle_2"] = {0, 1},
-        ["idle_3"] = {0, 2},
-        ["idle_4"] = {0, 1},
         ["hurt"] = {0, -10},
         ["spared"] = {2, 0},
     }
