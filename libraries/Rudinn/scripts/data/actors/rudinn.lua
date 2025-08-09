@@ -16,17 +16,20 @@ function actor:init()
     self.default = "idle"
 
     self.animations = {
-        ["idle"] = {"idle", 0.25, true},
-        ["tired"] = {"tired", 0.25, true},
-        ["spared"] = {"spared", 0.25, true},
-        ["hurt"] = {"hurt", 0, false}
+        ["idle"] = {"idle", 0.2, true},
+        ["tired"] = {"tired", 0.2, true},
+        ["spared"] = {"spared", 0.2, true},
+        ["hurt"] = {"hurt", 0, false},
+
+        ["overworld"] = {"overworld", 0.2, true},
+    }
+	
+    self.talk_sprites = {
+        [""] = 0.15
     }
 
     self.offsets = {
-        ["idle"] = {-6, 5},
-        ["tired"] = {-6, 5},
-        ["spared"] = {-4, 5},
-        ["hurt"] = {-1, -1},
+        ["hurt"] = {0, -7},
     }
 end
 
