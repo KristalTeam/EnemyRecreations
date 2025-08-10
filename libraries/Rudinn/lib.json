@@ -1,11 +1,20 @@
 {
     "id": "rudinn",
 
-    "version": "v1.2.2",
-    "engineVer": "v0.8.1",
+    "version": "v1.3.0",
+    "engineVer": "v0.10.0-dev",
 
     "authors": [
         "Kaysan",
-        "pixelator"
-    ]
+        "pixelator",
+        "J.A.R.U."
+    ],
+
+    "config": {
+        // Enables the unused dialogue that would've occured when using the Convince ACT for the first time.
+        "extra_convince_dialogue": false,
+
+        // Enables a tired animation to display when the Lecture ACT is used. This was originally an overworld animation that went unused in Deltarune.
+        "tired_animation": false,
+    }
 }
