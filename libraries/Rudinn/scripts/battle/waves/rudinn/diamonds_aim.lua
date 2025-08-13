@@ -12,11 +12,13 @@ function DiamondsAim:onStart()
     self.timer:every(12/30*ratio, function()
         for _, attacker in ipairs(self:getAttackers()) do
             local soul = Game.battle.soul
-			
+
             local dir = 30 + love.math.random(120)
             local radius = 140 + love.math.random(80)
-            local x = math.cos(dir)*radius
-            local y = math.sin(dir)*radius
+
+            -- NOTE: GML angles have 90 as NORTH, so we need to invert our angle to achieve the same
+            local x = math.cos(math.rad(-dir)) * radius
+            local y = math.sin(math.rad(-dir)) * radius
 		
             local diamond = self:spawnBullet("rudinn/diamond_black", soul.x + x, soul.y + y)
         end
