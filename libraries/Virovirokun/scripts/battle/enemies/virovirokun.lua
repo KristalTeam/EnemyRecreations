@@ -117,7 +117,7 @@ function Virovirokun:onShortAct(battler, name)
     elseif name == "Standard" then
         self:addMercy(50)
         if battler.chara.id == "noelle" then
-            return "* Noelle offered a cold compress!"
+            return "* Noelle tried her best!"
         elseif battler.chara.id == "susie" then
             return "* Susie encouraged evil!"
         elseif battler.chara.id == "ralsei" then
@@ -130,7 +130,9 @@ end
 
 function Virovirokun:onAct(battler, name)
     if name == "TakeCare" then
-        self:addMercy(100)
+        if self.mercy < 100 then
+            self:addMercy(100)
+        end
         return "* You treated Virovirokun with\ncare! It's no longer\ninfectious!"
     elseif name == "Quarantine" then
         self:setTired(true)
@@ -138,10 +140,12 @@ function Virovirokun:onAct(battler, name)
         return "* You told Virovirokun to stay home.\nVirovirokun became [color:blue]TIRED[color:reset]..."
     elseif name == "TakeCareX" then
         for _,enemy in ipairs(Game.battle:getActiveEnemies()) do
-            if enemy.id == "virovirokun" then
-                enemy:addMercy(100)
-            else
-                enemy:addMercy(50)
+            if enemy.mercy < 100 then
+                if enemy.id == "virovirokun" then
+                    enemy:addMercy(100)
+                else
+                    enemy:addMercy(50)
+                end
             end
         end
         Game.battle:startActCutscene(function(cutscene)
@@ -192,7 +196,9 @@ function Virovirokun:onAct(battler, name)
         end
         return
     elseif name == "Standard" then
-        self:addMercy(50)
+        if self.mercy < 100 then
+            self:addMercy(50)
+        end
         if battler.chara.id == "noelle" then
             return "* Noelle offered a cold compress!"
         elseif battler.chara.id == "susie" then
