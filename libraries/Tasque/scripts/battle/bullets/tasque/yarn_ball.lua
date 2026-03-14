@@ -2,7 +2,7 @@ local bullet, super = Class(Bullet, "tasque/yarn_ball")
 
 function bullet:init(x, y, dir, speed)
     -- Last argument = sprite path
-    super:init(self, x, y, "bullets/tasque/yarn_spawn")
+    super.init(self, x, y, "bullets/tasque/yarn_spawn")
 
     self:setScale(0, 0)
 

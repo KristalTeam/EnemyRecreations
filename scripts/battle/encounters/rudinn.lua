@@ -1,7 +1,7 @@
 local Rudinn, super = Class("custom_encounter")
 
 function Rudinn:init()
-    super:init(self)
+    super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
     self.text = "* Rudinn drew near!"

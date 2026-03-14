@@ -1,7 +1,7 @@
 local enemy, super = Class(EnemyBattler, "tasque")
 
 function enemy:init()
-    super:init(self)
+    super.init(self)
 
     -- Enemy name
     self.name = "Tasque"

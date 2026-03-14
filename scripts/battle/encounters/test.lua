@@ -1,7 +1,7 @@
 local EncounterTest, super = Class(Encounter)
 
 function EncounterTest:init(enemies)
-    super:init(self)
+    super.init(self)
 
     -- Text displayed at the bottom of the screen at the start of the encounter
     self.text = "* Test"
