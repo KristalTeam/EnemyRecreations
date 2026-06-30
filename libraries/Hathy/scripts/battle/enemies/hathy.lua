@@ -15,8 +15,8 @@ function Hathy:init()
     self.spare_points = 20
 
     self.dialogue = {
-        "[voice:nil]\n[image:enemies/hathy/heartchomp, 0, -5, 1, 1, 0.2]\n",
-        "[voice:nil]\n[image:enemies/hathy/heartkiss, 0, -5, 1, 1, 0.2]\n"
+        "[voice:none]\n[image:enemies/hathy/heartchomp, 0, -5, 1, 1, 0.2]\n",
+        "[voice:none]\n[image:enemies/hathy/heartkiss, 0, -5, 1, 1, 0.2]\n"
     }
 
     self.check = "AT 7 DF 0\n* I am a [color:yellow]little kiss[color:reset]."
@@ -39,7 +39,7 @@ end
 function Hathy:onAct(battler, name)
     if name == "Flatter" then
         self:addMercy(100)
-        self.dialogue_override = "[voice:nil]\n[image:enemies/hathy/smallheart, 0, -17, 1, 1, 0.2]"
+        self.dialogue_override = "[voice:none]\n[image:enemies/hathy/smallheart, 0, -17, 1, 1, 0.2]"
         local rnd = math.random(1,3)
         if rnd == 1 then
             return "* You told Hathy it has cool tentacles.[wait:10]\n* It began to think about this..."
@@ -51,7 +51,7 @@ function Hathy:onAct(battler, name)
     elseif name == "X-Flatter" then
         for _, enemy in ipairs(Game.battle.enemies) do
             if enemy.name == "Hathy" then
-                enemy.dialogue_override = "[voice:nil]\n[image:enemies/hathy/smallhearts, 0, -5, 1, 1, 0.2]\n"
+                enemy.dialogue_override = "[voice:none]\n[image:enemies/hathy/smallhearts, 0, -5, 1, 1, 0.2]\n"
             end
         end
         Game.battle:startActCutscene("hathy", "x_flatter")
@@ -59,7 +59,7 @@ function Hathy:onAct(battler, name)
     elseif name == "S-Flatter" then
         for _, enemy in ipairs(Game.battle.enemies) do
             if enemy.name == "Hathy" then
-                enemy.dialogue_override = "[voice:nil]\n[image:enemies/hathy/smallhearts, 0, -5, 1, 1, 0.2]\n"
+                enemy.dialogue_override = "[voice:none]\n[image:enemies/hathy/smallhearts, 0, -5, 1, 1, 0.2]\n"
             end
         end
         Game.battle:startActCutscene("hathy", "s_flatter")
